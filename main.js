@@ -1,22 +1,28 @@
-export const fn = (a, b, c) => {
-
-   while((a+b+c)<40 && ((a+b+c)%3 === 0)){
-
-      let ab = (a + b)/2;
-      let ac = (a + c)/2;
-      let bc = (b + c)/2;
-
-      a = 12;
-      b = 14;
-      c = 16;
-
-      ab = 13;
-      ac = 14;
-      bc = 15;
 
 
-   }
-   
-   
-   // Cuerpo de la función: Completa la lógica de la función aquí.
-};
+export const fn = (empA, empB, empC) => {
+
+  if ((empA + empB + empC) > 39 || empA < 0 || empB < 0 || empC < 0 || (empA + empB + empC) % 3 != 0) {
+
+    throw new Error
+  }
+
+  ///////////////3,3,0////2,0,1/----- 2ac 1a 
+
+  if ((empC - empA) < 0) {
+
+    let empNewA = -(empC - empA);//las a que te quedan sin mezclar newA (-1)
+
+    let empAC = (empC - empNewA) // 1 - (-1) = 2ac = 2b.
+
+    let empTotales = (empB + empAC) + (empNewA);
+
+    return (((empTotales) / 3) * 14)
+
+  }
+
+
+
+}
+
+
