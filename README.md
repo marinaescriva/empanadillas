@@ -1,3 +1,26 @@
+# Cooking empanadas
+
+The objective of this exercise is pass the proposed test by design a function with different parameters. The function shoud throw the correct result in each test. Use bucles or others is allowed. 
+
+
+## Tools
+
+JavaScript
+JavaScript Testing
+
+## Main idea
+
+I focused the math problem in make the empanadas C = 0 because they are the expensive ones. Following this idea, its necessary mix empanadas C with empanadas A and this mixed empanadas have the same price as empanadas B. So, if i can mix all C with A i only have to pay empanada B packs.
+
+First I have to know if there are empanadas C for mix them. Know if all of them can mix with A or, it can be mixed with B.
+To make the payments I do some "cheap packages" because this packs only have empanadas from (A or B) when it was possible.
+
+Too, the objective is pay the packs as cheap as possible, so pay C or B when the mix is possible is a nonsense.
+
+## Difficulties
+
+I really have difficulties to define the main IF because at the beginning i didnt think about what happens when C=0 or B=0 and you have to mix with other empanada. In this case the packs aren't of "cheap packages" because they could have A+B or only A and the price changes.
+
 # Compra de empanadas
 
 ## Enunciado del problema
