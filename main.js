@@ -4,7 +4,7 @@ export const fn = (empA, empB, empC) => {
 
   if (((empA + empB + empC) > 40) || (empA < 0) || (empB < 0) || (empC < 0) || ((empA + empB + empC) % 3 != 0)) {
 
-    throw new Error ("La oferta 3x1 no puede aplicarse")
+    throw new Error("La oferta 3x1 no puede aplicarse")
 
   }
 
@@ -22,49 +22,46 @@ export const fn = (empA, empB, empC) => {
 
   if (empC < empA) {
 
-    let empAC = empA - (empA - empC)
-
-    if (empC == 0) {
+    if (empC == 0) {  
       let empNoMix = empA - empB
       let empMix = (empA - empNoMix) * 2
-      
+
       let pFinal = (empMix / 3) * 13
       return (pFinal)
     }
-    if (empC != 0) {
 
-      let empNoAC = (empA - empAC)
-      
-      let empMix = empB + empAC
-     
-      let pPago = (((empMix) - (empMix % 3)) / 3) * 14
-      
+    let empACdeC = (empA - (empA - empC))   // because A>C so no-mixed ones are A and all C will be mixed.
+    let empAC = (empACdeC) * 2 // because in fact C is completly mixed with A, so C=0, and no-mixed empanadas are now always A. // 18,2,18
+
+    if (empC != 0) { 
+
+      let empNoAC = (empA - empC) //  they will be always A.
+
+      let empMix = empB + empAC 
+
+      let pPago = (((empMix) - (empMix % 3)) / 3) * 14 
 
 
-      if (empMix > 3) {
+      if (empNoAC > (empMix % 3)) { //if mixed ones not payed, are like b, can be re-mixed with a now!
 
-        let empX = (empB + empMix)
-       
-        let empY = (empMix % 3)
-        
-        let sPago = (empNoAC - (empNoAC % 3) / 3) * 12
+        let empNoAB = (empNoAC - (empMix % 3))// the a's which are no mixed with "B" lefted
+        let empAB = (empNoAC - (empNoAC - (empMix % 3))) * 2  // the mix between A+B , so price is 13€
 
-        let tPago = ((empY + (empNoAC % 3)) / 3) * 14
-      
+        let sPago = ((empAB + empNoAB) / 3) * 13 // the last pack 3x1 is 2AB with 1a , so the price is for AB price =13€
 
-        let pFinal = pPago + sPago + tPago
+        let pFinal = pPago + sPago
+
         return (pFinal)
-
       }
 
-      let sPago = ((empNoAC + empMix + (empMix % 3)) / 3) * 14
-      
+      let sPago = ((empNoAC + (empMix % 3)) / 3) * 14 
 
       let pFinal = pPago + sPago
+
       return (pFinal)
     }
-  }
 
+  }
 
 
   if ((empC > empA)) {
